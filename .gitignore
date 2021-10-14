@@ -1,0 +1,7 @@
+# Object files
+*.o
+*.a
+*.dep
+
+.vscode
+.DS_Store
