@@ -43,7 +43,27 @@ You may want to edit the following configurations:
 #define HART_NUM 4
 ```
 
-# Citation
+- Enclave context definition
+
+```c
+// enclave.h
+
+typedef struct __enc_ctx {
+    uintptr_t id;
+
+    // **** Other context info here ****
+
+    // **** END
+    uintptr_t ns_satp;
+
+    uintptr_t pt_root_addr;
+    uintptr_t inverse_map_addr;
+    uintptr_t offset_addr;
+    pmp_region_t pmp_reg[PMP_REGION_NUM];
+} enclave_context_t;
+```
+
+## Citation
 
 If you want to cite the project, please use the following bibtex:
 

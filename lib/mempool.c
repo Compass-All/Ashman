@@ -385,7 +385,6 @@ try_find:
 found:
     set_partition_zero(ret);
     update_partition_info(ret, eid, va);
-    // PMP
 
     return ret << PARTITION_SHIFT;
 }
@@ -513,14 +512,8 @@ int partition_migration(uintptr_t src_pfn, uintptr_t dst_pfn)
     // 5. Free the source sectino
     free_partition(src_pfn);
 
-    // 6. Flush TLB and D-cache
+    // 6. Flush TLB
     flush_tlb();
-    // flush_dcache_range(dst_pa, dst_pa + SECTION_SIZE);
-    // invalidate_dcache_range(src_pa, src_pa + SECTION_SIZE);
-    // if (!is_base_module) {
-    // 	flush_dcache_range(pt_root,
-    // 			   pt_root + PAGE_DIR_POOL * EPAGE_SIZE);
-    // }
 
     return dst_pfn;
 }
